@@ -1,11 +1,28 @@
 import Link from 'next/link'
 
-export default function index() {
+export default function index({products}) {
   return (
     <div>
-        <h4> <Link href='/product/1'> product1 </Link> </h4>
-        <h4> <Link href='/product/2'> product2 </Link> </h4>
-        <h4> <Link href='/product/3'> product3 </Link> </h4>
+      <ul>
+        {products.map((product) => (
+          <div key={product.id}>
+            <li>{product.price} Tk</li>
+            <li>{product.title}</li>
+          </div>
+        ))}
+      </ul>
     </div>
   )
+}
+
+export async function getStaticProps() {
+
+  const res = await fetch('https://fakestoreapi.com/products')
+  const products = await res.json()
+
+  return {
+    props: {
+      products,
+    },
+  }
 }
