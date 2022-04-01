@@ -7,8 +7,12 @@ body {
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  background-color: green;
+  color: white;
+  border: 20px;
+  border-radius: 5px;
+  height: 20px;
+  width: 100%;
 }
 
 * {
